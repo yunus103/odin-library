@@ -121,7 +121,7 @@ body {
   background: #f9f9fc;
   border-radius: 12px;
   padding: 1.5rem;
-  min-height: 220px; /* taller than before */
+  min-height: 250px; /* taller than before */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -152,7 +152,7 @@ body {
   margin-bottom: auto;
 }
 
-.status-btn {
+.status-btn, .delete {
   margin-top: 1rem;
   font-weight: bold;
   padding: 0.4rem 0.8rem;
@@ -175,4 +175,21 @@ body {
 
 .status-btn:hover {
   transform: scale(1.05);
+}
+
+.delete {
+  outline: 1px red solid;
+  color: red;
+  transition: all 0.25s ease;
+}
+
+.delete:hover {
+  background-color: rgb(203, 4, 4);
+  color: #fff;
+  transform: scale(1.02);
+}
+
+.delete:active {
+  background-color: darkred;
+  transform: scale(0.97);
 }
