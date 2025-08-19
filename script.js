@@ -24,7 +24,38 @@ addBookToLibrary(book3);
 const container = document.querySelector(".card-container");
 myLibrary.forEach(book => container.appendChild(displayBooks(book)));
 
+const addButton = document.querySelector(".add-button");
+const addDialog = document.querySelector("#add-book");
+const cancelButton = document.querySelector(".cancel");
+const confirmButton = document.querySelector(".confirm");
 
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+const readInput = document.getElementById("isRead");
+
+addButton.addEventListener("click", () => 
+    addDialog.showModal()
+);
+
+addDialog.addEventListener("close", () => {
+    if(addDialog.returnValue === "confirm"){
+        const newBook = new Book(
+            titleInput.value,
+            authorInput.value,
+            pagesInput.value,
+            readInput.checked ? true : false
+        );
+
+        myLibrary.push(newBook);
+        container.appendChild(displayBooks(newBook));
+    }
+});
+
+cancelButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    addDialog.close();
+})
 
 // Disable links
 document.querySelectorAll('.dash-item.disabled').forEach(link => {
@@ -35,24 +66,27 @@ document.querySelectorAll('.dash-item.disabled').forEach(link => {
 
 
 // Button for read unread
-document.querySelectorAll('.status-btn').forEach(button => {
-  button.addEventListener('click', (e) => {
-    if (button.classList.contains('read')) {
-      button.classList.remove('read');
-      button.classList.add('unread');
-      button.textContent = 'Unread';
+container.addEventListener("click", (e) => {
+  if (e.target.classList.contains("status-btn")) {
+    const button = e.target;
+
+    if (button.classList.contains("read")) {
+      button.classList.remove("read");
+      button.classList.add("unread");
+      button.textContent = "Unread";
     } else {
-      button.classList.remove('unread');
-      button.classList.add('read');
-      button.textContent = 'Read';
+      button.classList.remove("unread");
+      button.classList.add("read");
+      button.textContent = "Read";
     }
 
-    const currentCardId = e.target.closest(".book-card").dataset.id;
+    // Update library object
+    const currentCardId = button.closest(".book-card").dataset.id;
     const currentBook = myLibrary.find(b => b.id === currentCardId);
-    if(currentBook){
-        currentBook.toggleStatus();
+    if (currentBook) {
+      currentBook.toggleStatus();
     }
-  });
+  }
 });
 
 

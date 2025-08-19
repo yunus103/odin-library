@@ -77,13 +77,15 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
+  gap: 1rem;
 }
 
 .search-box {
   position: relative;
   width: 70%;
-  max-width: 600px;
+  max-width: 550px;
   margin-left: 10%;
+  max-height: 45px;
 }
 
 .search-box input {
@@ -108,6 +110,134 @@ body {
 .header img {
   width: 40px;
 }
+
+.add-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.add-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.add-button:active {
+    transform: scale(0.96);
+    opacity: 0.95;
+}
+
+dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-family: sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+input {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.3);
+}
+
+form .read-status {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+
+  form .read-status input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #4caf50; /* green checkbox */
+    cursor: pointer;
+  }
+
+  form .read-status label {
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+  }
+
+menu.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+menu button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+menu button:active {
+  transform: scale(0.95);
+}
+
+button.cancel {
+  background: #eee;
+}
+
+button.cancel:hover {
+  background: #ddd;
+}
+
+button.confirm {
+  background: #4a90e2;
+  color: white;
+}
+
+button.confirm:hover {
+  background: #3b78c2;
+}
+
 
 /* Card */
 
